@@ -1,0 +1,29 @@
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  background: linear-gradient(180deg, #f3c77b, white);
+}
+
+.navLogo {
+  height: 75px;
+  width: auto;
+  margin: 5px;
+}
+
+
+.navLink {
+  text-decoration: none;
+  color: black;
+}
+
+ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+ul li{
+  margin: 5px;
+}
+

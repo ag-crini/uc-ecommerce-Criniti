@@ -1,8 +1,5 @@
-.navBar {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  background: linear-gradient(180deg, #f3c77b, white);
+.itemContainer {
+  background: white;
 }
 
 .navLogo {

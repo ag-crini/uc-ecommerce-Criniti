@@ -1,29 +1,20 @@
-.Item{
-  height: 400px;
-  width: 275px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+.ItemList{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
-  border-radius: 5%;
-
-  
 }
 
-.Item div{
+.Items div{
 
+  height: 400px;
+  width: 275px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  border-radius: 5%;
   display: flex;
   flex-direction: row;
   align-items: center;
 
 }
 
-
-/*.imgItem{
-  width:100%;
-  height:auto;
-  border-top-left-radius: 5%;
-  border-top-right-radius: 5%;
-}*/
 

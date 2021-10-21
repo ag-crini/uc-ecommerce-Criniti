@@ -1,26 +1,8 @@
 .itemContainer {
   background: white;
-}
-
-.navLogo {
-  height: 75px;
-  width: auto;
-  margin: 5px;
-}
-
-
-.navLink {
-  text-decoration: none;
-  color: black;
-}
-
-ul{
   display: flex;
   flex-direction: row;
-  list-style: none;
+  flex-wrap: wrap;
 }
 
-ul li{
-  margin: 5px;
-}
 

@@ -1,23 +1,19 @@
 import './ItemCount.css';
 import { useState } from 'react';
-import barra from './img/barra.jpg'
+import barra from '../img/barra.jpg'
 
 const ItemCount = ({initial, stock})=>{
 
-  const [count, setCount] = useState (parseInt(initial))
+  const [count, setCount] = useState (initial)
 
   const onAdd =()=>{
-    setCount (count+parseInt(1))
+    if (count <stock){
+      setCount (count+1)}
   };
   const onDecrease =()=>{
-    setCount (count-parseInt(1))
+    if (count>initial){
+      setCount (count-1)}
   };
-
-  if (count> stock) {
-    setCount (count-parseInt(1))
-  } else if (count <=0){
-    setCount(count+parseInt(1))
-  }
 
    return(
     <div className="Contador">

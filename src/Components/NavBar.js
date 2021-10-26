@@ -1,4 +1,4 @@
-import logoUC from './img/logo-uc.png';
+import logoUC from '../img/logo-uc.png';
 import './NavBar.css';
 import CartWidget from './CartWidget';
 

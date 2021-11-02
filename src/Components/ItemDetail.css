@@ -1,0 +1,29 @@
+.ItemDetail{
+  height: 400px;
+  width: 1075px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border: black 4px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content:flex-end;
+  align-items: center;
+  margin: 35px;
+  border-radius: 5%;
+}
+
+.ItemDetailDescription{
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.ItemDetail img {
+  height: 400px;
+  width: 575px;
+  border-top-left-radius: 5%;
+  border-bottom-left-radius: 5%;
+}
+
+

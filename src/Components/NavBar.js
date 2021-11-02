@@ -1,18 +1,19 @@
 import logoUC from '../img/logo-uc.png';
 import './NavBar.css';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom' 
 
 
 export const NavBar =()=> {
   return (
     <div className="navBar">
-        <img src={logoUC} className="navLogo" alt="logo" />
+        <Link to={"/"}><img src={logoUC} className="navLogo" alt="logo" /></Link>
         <div>
                 <ul>
-                    <li><a className="navLink" href="/#" target="_blank" rel="noopener noreferrer">Productos</a></li>
-                    <li><a className="navLink" href="/#" target="_blank" rel="noopener noreferrer">Sucursales</a></li>
-                    <li><a className="navLink" href="/#" target="_blank" rel="noopener noreferrer">Contacto</a></li>
-                    <li><a className="navLink" href="/#" target="_blank" rel="noopener noreferrer">Preguntas Frecuentes</a></li>
+                    <li><Link to={"/"}>Mesas</Link></li>
+                    <li><Link to={"/"}>Barras y Living</Link></li>
+                    <li><Link to={"/"}>Otros</Link></li>
+                    <li><Link to={"/faqs"}>Preguntas Frecuentes</Link></li>
                 </ul>
         </div>  
       <CartWidget />

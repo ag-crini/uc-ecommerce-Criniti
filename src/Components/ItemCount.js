@@ -1,6 +1,6 @@
 import './ItemCount.css';
 import { useState } from 'react';
-import barra from '../img/barra.jpg'
+//import barra from '../img/barra.jpg'
 
 const ItemCount = ({initial, stock})=>{
 
@@ -17,13 +17,11 @@ const ItemCount = ({initial, stock})=>{
 
    return(
     <div className="Contador">
-        <img src={barra} className="imgContador" alt="foto-barra"/>
-        <div>      
-          <button onClick={onAdd}>+</button>
-          <p>{count}</p>
+        <div>
           <button onClick={onDecrease}>-</button>
+          <p>{count}</p>
+          <button onClick={onAdd}>+</button>
         </div>
-        <button> Agregar al carrito de compra! </button>
     </div>
   )
 }

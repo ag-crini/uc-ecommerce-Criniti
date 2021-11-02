@@ -1,8 +1,8 @@
 .itemContainer {
-  background: white;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 

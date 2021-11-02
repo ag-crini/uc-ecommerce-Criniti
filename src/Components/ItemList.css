@@ -1,7 +1,8 @@
 .ItemList{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .Items div{

@@ -10,9 +10,9 @@ export const NavBar =()=> {
         <Link to={"/"}><img src={logoUC} className="navLogo" alt="logo" /></Link>
         <div>
                 <ul>
-                    <li><Link to={"/"}>Mesas</Link></li>
-                    <li><Link to={"/"}>Barras y Living</Link></li>
-                    <li><Link to={"/"}>Otros</Link></li>
+                    <li><Link to={"/category/mesa"}>Mesas</Link></li>
+                    <li><Link to={"/category/living"}>Barras y Living</Link></li>
+                    <li><Link to={"/category/otro"}>Otros</Link></li>
                     <li><Link to={"/faqs"}>Preguntas Frecuentes</Link></li>
                 </ul>
         </div>  

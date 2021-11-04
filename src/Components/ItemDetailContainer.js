@@ -1,11 +1,11 @@
 import './ItemDetailContainer.css';
 import ItemDetail from './ItemDetail';
 import {useState,useEffect } from 'react';
-//import { useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 const data = [
-  {id:"1", categoria:"mesa", title:'Mesa Cuyo S', price:'19000', stock:'18', pictureUrl:'/img/mesa-xs.jpg', medidas:'Al: 0,45 mts., An: 1 mt., La: 1,2 mts'},
-  {id:"2", categoria:"mesa", title:"Mesa Cuyo M", price:"23000", stock:"9", pictureUrl:'/img/mesa-m.jpg', medidas:'Al: 0,85 mts., An: 1.2 mts., La: 1,8 mts'},
+  {id:'1', categoria:"mesa", title:'Mesa Cuyo S', price:'19000', stock:'18', pictureUrl:'/img/mesa-xs.jpg', medidas:'Al: 0,45 mts., An: 1 mt., La: 1,2 mts'},
+  {id:'2', categoria:"mesa", title:"Mesa Cuyo M", price:"23000", stock:"9", pictureUrl:'/img/mesa-m.jpg', medidas:'Al: 0,85 mts., An: 1.2 mts., La: 1,8 mts'},
   {id:"3", categoria:"mesa", title:"Mesa Cuyo L", price:"25000", stock:"7", pictureUrl:'/img/mesa-l.jpg', medidas:'Al: 0,85 mts., An: 1.2 mt., La: 2.4 mts'},
   {id:"4", categoria:"living", title:"Estantería Norteña", price:"35000", stock:"9", pictureUrl:"/img/estanteria.jpg", medidas:'Al: 1,9 mts., An: 0.45 mts., La: 2.1 mts'},
   {id:"5", categoria:"living", title:"Barra Patagónica", price:"29000", stock:"5", pictureUrl:"/img/barra.jpg", medidas:'Al: 1,35 mts., An: 0.8 mts., La: 1.7 mts'},
@@ -16,27 +16,28 @@ const data = [
 
 export default function ItemDetailContainer(){
 
-  //const {itemID} = useParams ();
-
-  const [elementos, setElementos] =useState ([]);
+  const [elemento, setElemento] =useState ([]);
+  const {itemId} = useParams ();
 
   const getItem = (datos) => new Promise ((resolve,reject)=>{
     setTimeout(()=>{
       if (data){resolve (datos)
-      } else{ reject ("No hay datos de productos.")
+      } else{ reject ("No hay datos de producto.")
       }  
-    },1500)
+    },1000)
   })
 
   useEffect(()=>{
     getItem(data)
-    .then(res=> setElementos(res[2]))
+    .then(res=> {setElemento(res.find((detalle)=> detalle.id === itemId ))})
     .catch(err=> console.log("error al cargar"))
-  },[]);
+  },[itemId]);
+
+  console.log(elemento)
 
 return (
   <div className="itemDetailContainer">
-    <ItemDetail key={elementos.id} title={elementos.title} price={elementos.price} medidas={elementos.medidas} stock={elementos.stock} pictureUrl={elementos.pictureUrl}/>
-
+    <ItemDetail key={elemento.id} title={elemento.title} 
+    price={elemento.price} stock={elemento.stock} pictureUrl={elemento.pictureUrl}/>
   </div>
 )}

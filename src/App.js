@@ -13,10 +13,11 @@ function App() {
         <Route exact path="/">
           <ItemListContainer />
         </Route>
-        <Route exact path="/">
+
+        <Route exact path="/category/:categoryId">
           <ItemListContainer />
         </Route>
-        <Route exact path="/itemdetailcontainer">
+        <Route exact path="/item/:itemId">
           <ItemDetailContainer />
         </Route>
         <Route path="/faqs">

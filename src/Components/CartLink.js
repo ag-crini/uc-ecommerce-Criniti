@@ -10,7 +10,6 @@ export const CartLink = () =>{
       <Link to={`/cart`}>
         <button>Ir a mi carrito</button>
       </Link>
-      <button> Quiero sumar más de este producto!</button>
     </div>
   )
 }

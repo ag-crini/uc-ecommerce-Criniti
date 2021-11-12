@@ -1,22 +1,21 @@
 import './ItemCount.css';
 import { useState } from 'react';
+//import { CartContext } from '../Context/CartContext';
 
 
-const ItemCount = (props)=>{
+const ItemCount = ({stock, initial, onAdd})=>{
 
-  const [count, setCount] = useState (props.initial)
+  const [count, setCount] = useState (initial)
+  
 
   const onIncrease =()=>{
-    if (count <props.stock){
+    if (count < stock){
       setCount (count+1)}
   };
   const onDecrease =()=>{
-    if (count>props.initial){
+    if (count> initial){
       setCount (count-1)}
   };
-
-
-  
 
   return(
     <div className="Contador">
@@ -27,7 +26,7 @@ const ItemCount = (props)=>{
         </div>
 
         <div>
-              <button onClick={()=>props.onAdd(count)}>Agregar al carrito</button>
+              <button onClick={()=>onAdd(count)}>Agregar al carrito</button>
         </div>
     </div>
   )
@@ -35,7 +34,7 @@ const ItemCount = (props)=>{
 
 export default ItemCount;
 
+//const {addItem}=useContext(CartContext)
 
-
-
+//import { useContext, useState } from 'react';
  

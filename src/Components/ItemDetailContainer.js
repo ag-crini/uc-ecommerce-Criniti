@@ -38,7 +38,7 @@ export default function ItemDetailContainer(){
 
 return (
   <div className="itemDetailContainer">
-    <ItemDetail {...elemento}/>
+    <ItemDetail item= {elemento}/>
   </div>
 )}
 

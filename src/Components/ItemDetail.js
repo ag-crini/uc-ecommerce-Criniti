@@ -1,48 +1,78 @@
 import './ItemDetail.css';
 import ItemCount from './ItemCount';
-import CartLink from './CartLink';
-import { useState } from 'react';
-//import { CartContext } from '../Context/CartContext';
-
-export default function ItemDetail ({id,title,price,stock,medidas,pictureUrl}){
-
-  
-  const [cantidad , setCantidad] = useState (null);
-  const [mostrarCount, setMostrarCount] = useState (true);
+import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { CartContext } from '../Context/CartContext';
 
 
-  const agregarACarrito =(cantidad)=>{
-    setCantidad (cantidad)
-    setMostrarCount(false)
- }
 
-  const onRemonta =()=>{
-    setMostrarCount (true)
-  }
+export default function ItemDetail ({item}){
 
-  return (
-    <div > 
-      <div className="ItemDetail" key={id}>
-          <div className="ItemDetailDescription">
-            <h1>{title}</h1>
-            <p> Precio:{price} - Stock:{stock} </p>
-            <h2> Medidas </h2>
-            <p>{medidas}</p>
-            
-            { mostrarCount? <ItemCount stock={stock} initial={1} onAdd={agregarACarrito} /> : 
-            
-            <div>
-              <p> Agregaste {cantidad} unidades a tu carrito! </p>
-              <button onClick={onRemonta}> Quiero sumar más de este producto!</button>
-              <CartLink/>
-            </div>
-            }            
-          </div>
-          <img src={pictureUrl} alt="img-producto"/>
-        </div>
-    </div>
-  )
+const {addItem}=useContext(CartContext)
+
+const [mostrarCount, setMostrarCount]=useState(true)
+
+
+const onAddHandle = (counter) => {
+  addItem(item, counter)
+  setMostrarCount (false)
 };
 
-//const {carrito, setCarrito, addItem}=useContext(CartContext);
 
+  return (
+      <div > 
+      <div className="ItemDetail" key={item.id}>
+          <div>
+            <h1>{item.title}</h1>
+            <p> Precio:{item.price} - Stock:{item.stock} </p>
+            <h2> Medidas </h2>
+            <p>{item.medidas}</p>
+          
+          
+            {item.stock > 0 ? 
+        (
+          mostrarCount ? 
+          (
+            <div>
+              <ItemCount initial={1} onAdd={onAddHandle} item={item}/>
+            </div>
+          )
+          :          
+          (
+            <div>
+              <Link to='/cart'>
+                <button >
+                  Ir a mi carrito!
+                </button>
+              </Link>
+
+              <Link to='/'>
+                <button>
+                  Continuar comprando!
+                </button>
+              </Link>
+            </div>
+          )
+        )
+        :
+        (
+          <div>
+            <h1>No hay más stock!</h1>
+            <Link to='/'>
+              <button>Continuar comprando!</button>
+            </Link>
+          </div>
+        )
+      }
+                   
+          </div>
+          <img src={item.pictureUrl} alt="img-producto"/>
+        
+      </div>
+    </div>
+
+
+    )} 
+
+  
+  

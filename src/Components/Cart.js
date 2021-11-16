@@ -5,22 +5,31 @@ import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
 
 
-export const Cart = () =>{
+export const Cart =()=> {
   
-  const {carrito, removeItem, clear }= useContext(CartContext)
-  
+  const {carrito, clear}=useContext(CartContext)
+
+  const {removeItem }= useContext(CartContext);
+    console.log(carrito)
+
+    const precioFinal = carrito.reduce((precioAcum, item) => precioAcum + (item.counter * item.price),0);
+
+
   return(
-    <div className="Cart">
+<div className="Cart">
       {carrito.length ? (
-        carrito.map (producto => 
-          <div key={producto.id}>
-            <CartItem 
-              key={producto.id}
-              title={producto.title}
-              price={producto.price} 
-              stock={producto.stock} 
-              pictureUrl={producto.pictureUrl} /> 
-            <button onClick={()=>removeItem(producto.id)}>Remover item</button>
+        carrito.map (item => 
+          <div key={item.id}>
+            
+            <CartItem
+            id={item.id}
+            pictureUrl={item.pictureUrl}
+            title={item.title}
+            counter={item.counter}
+            price={item.price}
+                                    
+            /> 
+            <button onClick={()=>removeItem(item.id)}>Remover item</button>
           </div>  
         )): 
         <div>
@@ -31,18 +40,31 @@ export const Cart = () =>{
         </div>}
           
       {carrito.length ? (
-				<button onClick={() => clear()}>Remover todos los productos</button>
-			  ) : 
+				<div>
+          <button onClick={() => clear()}>Remover todos los productos</button>
+          <button>Termine mi compra</button>
+			  </div>
+        ) : 
 				<Link to='/'>
 					<button>Volver al menú</button>
 				</Link>
       }
 
-    </div>
+      <div>
+
+      {precioFinal !== 0 && 
+      ( <p>
+          Total a pagar: ${precioFinal}
+        </p>
+      )
+      }
+      </div>
+
+      </div>
+
+
   )
 }
 
-export default Cart; 
+export default Cart;  
 
-
-//const cart = useContext (CartContext);

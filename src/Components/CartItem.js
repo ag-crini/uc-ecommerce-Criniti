@@ -1,27 +1,24 @@
-//import { useContext } from 'react';
-//import { CartContext } from '../Context/CartContext';
-//import './CartItem.css';
+import { useState } from 'react';
+import './CartItem.css';
 
-
-export const CartItem = (id,title,price,stock,pictureUrl) =>{
+export const CartItem = ({id, pictureUrl,title,counter, price}) =>{
   
-  
-  return(
-    <div className="CartItem" key={id} >
-      <h1>{title}</h1>
-      <p>Precio:${price} - Stock:{stock} un.</p>
-      
-      <div>
-        <img src={pictureUrl} className="ImgItem" alt="foto-producto"/>  
-      </div>
 
-    </div>    
-  )
+  return (
 
+	<div key={id}>
+		<img src={pictureUrl} alt={title} />
+		<div>
+			<h2>{title}</h2>
+
+			<h3>Un.: {counter}</h3>
+
+			{counter >1? (<h3>${price * counter}</h3>):(<h3>{price}</h3>)}
+		</div>
+	</div>
+	);
 }
+
 
 export default CartItem; 
 
-
-//const cart = useContext (CartContext);
-//  const { carrito }= useContext(CartContext)

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './CartItem.css';
 
 export const CartItem = ({id, pictureUrl,title,counter, price}) =>{

@@ -26,7 +26,7 @@ const onAddHandle = (counter) => {
             <h1>{item.title}</h1>
             <p> Precio:{item.price} - Stock:{item.stock} </p>
             <h2> Medidas </h2>
-            <p>{item.medidas}</p>
+            <p>{item.medida}</p>
           
           
             {item.stock > 0 ? 

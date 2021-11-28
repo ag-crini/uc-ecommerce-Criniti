@@ -12,7 +12,8 @@ export const Cart =()=> {
   const {removeItem }= useContext(CartContext);
     console.log(carrito)
 
-    const precioFinal = carrito.reduce((precioAcum, item) => precioAcum + (item.counter * item.price),0);
+  const precioFinal = carrito.reduce((precioAcum, item) => precioAcum + (item.counter * item.price),0);
+
 
 
   return(
@@ -30,6 +31,7 @@ export const Cart =()=> {
                                     
             /> 
             <button onClick={()=>removeItem(item.id)}>Remover item</button>
+
           </div>  
         )): 
         <div>
@@ -42,7 +44,9 @@ export const Cart =()=> {
       {carrito.length ? (
 				<div>
           <button onClick={() => clear()}>Remover todos los productos</button>
-          <button>Termine mi compra</button>
+          <Link to='/checkout'>
+            <button>Termine mi compra</button>
+          </Link>
 			  </div>
         ) : 
 				<Link to='/'>

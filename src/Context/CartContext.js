@@ -24,8 +24,13 @@ export const CartProvider = ({children})=>{
                     setCarrito([...carrito]);
 		    }
             };
+
 	};
 
+
+
+
+    
     const removeItem =(id)=>{
         setCarrito(carrito.filter(item=> item.id !== id))   
     }

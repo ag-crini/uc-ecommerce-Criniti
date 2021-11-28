@@ -5,6 +5,7 @@ import ItemListContainer from './Components/ItemListContainer';
 import NavBar from './Components/NavBar';
 import FAQs from './Components/FAQs';
 import Cart from './Components/Cart';
+import FormularioCompra from './Components/FormularioCompra'
 import { CartProvider } from './Context/CartContext';
 
 
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <Cart />
+          </Route>
+          <Route exact path="/checkout">
+            <FormularioCompra />
           </Route>
         </Switch>
       </BrowserRouter>

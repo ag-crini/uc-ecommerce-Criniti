@@ -1,23 +1,18 @@
 import './ItemDetail.css';
 import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { CartContext } from '../Context/CartContext';
+import { useState } from 'react';
 
 
 
 export default function ItemDetail ({item}){
 
-const {addItem}=useContext(CartContext)
 
 const [mostrarCount, setMostrarCount]=useState(true)
 
-
-const onAddHandle = (counter) => {
-  addItem(item, counter)
+const onAddHandle = () => {
   setMostrarCount (false)
 };
-
 
   return (
       <div > 

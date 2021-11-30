@@ -4,27 +4,22 @@ import { CartContext } from '../Context/CartContext';
 
 
 
-const ItemCount = ({item, initial, mostrarBotonCarrito=true, onAdd=null})=>{
+const ItemCount = ({item, initial, mostrarBotonCarrito=true, onAdd})=>{
 
   const [count, setCount] = useState (initial)
   const {addItem} = useContext(CartContext)
   
+
   const onIncrease =()=>{
     if (mostrarBotonCarrito) {
       if (count < item.stock){
         setCount (count+1);
-        console.log('stock', item.stock)
-        console.log('counter', count)
-        console.log('id',item.id)
     	}else{
         console.log('No hay stock')
       }
     }else {
         console.log('mostrarBotonCarrito = False');
         if (item.stock > 0) {
-          console.log('stock', item.stock);
-          console.log('counter', count);
-          console.log('id',item.id);
           setCount(count + 1);
         } else {
           console.log('NO MORE STOCK!!!');
@@ -34,8 +29,6 @@ const ItemCount = ({item, initial, mostrarBotonCarrito=true, onAdd=null})=>{
 
   const onDecrease =()=>{
     if (count > 0 ){
-      console.log('stock', item.stock)
-      console.log('counter', count)
       setCount(count - 1)
     }
   }

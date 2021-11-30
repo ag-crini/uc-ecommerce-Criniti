@@ -5,7 +5,7 @@ import ItemListContainer from './Components/ItemListContainer';
 import NavBar from './Components/NavBar';
 import FAQs from './Components/FAQs';
 import Cart from './Components/Cart';
-import FormularioCompra from './Components/FormularioCompra'
+import FormularioCheckOut from './Components/FormularioCheckOut'
 import { CartProvider } from './Context/CartContext';
 
 
@@ -31,7 +31,7 @@ function App() {
             <Cart />
           </Route>
           <Route exact path="/checkout">
-            <FormularioCompra />
+            <FormularioCheckOut />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -45,7 +45,7 @@ export const Cart =()=> {
 				<div>
           <button onClick={() => clear()}>Remover todos los productos</button>
           <Link to='/checkout'>
-            <button>Termine mi compra</button>
+            <button>Confirmar compra!</button>
           </Link>
 			  </div>
         ) : 

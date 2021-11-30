@@ -12,24 +12,27 @@ export const CartProvider = ({children})=>{
     const addItem = (item, quantity) => {
 
 		const isItemInCart = carrito.some((producto) => producto.id === item.id);
-		    if (item.stock >=0) {
+	
                 if (!isItemInCart) {
                     item.stock = item.stock-quantity;
                     const nuevoItem = { ...item, stock: item.stock, counter: quantity };
 			        setCarrito([...carrito, nuevoItem]);
 		        } else {
-			        const foundedItem = carrito.find((product) => product.id === item.id);
-			        foundedItem.counter = foundedItem.counter + quantity ;
-                    foundedItem.stock = foundedItem.stock - quantity
-                    setCarrito([...carrito]);
+			        
+                    const nuevoCarrito = carrito.map((product) => product.id === item.id?
+                    
+                    {
+                        ...product,
+                        counter: product.count + quantity,
+                        stock: product.stock - quantity
+                    } : product
+                    );
+			        setCarrito([...nuevoCarrito]);
 		    }
+
             };
 
-	};
-
-
-
-
+	
     
     const removeItem =(id)=>{
         setCarrito(carrito.filter(item=> item.id !== id))   

@@ -1,57 +1,59 @@
 import { useState } from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
-import { addDoc, collection, Timestamp} from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc} from "@firebase/firestore";
 import { getFirestore } from '../firebase';
 import { Link } from 'react-router-dom';
 
 
-
 const FormularioCheckOut = ()=>{
 
-  const {carrito}=useContext(CartContext)
+  const {carrito, clear, removeItem}=useContext(CartContext)
   const [nuevaOrden, setNuevaOrden] = useState(null)
-
-  const [formulario, setFormulario] = useState({
+    const [formulario, setFormulario] = useState({
     nombre: "",
     email: "",
     telef: ""
   });
   
+  const fecha = new Date ();
+  const fechaOrden = fecha.toLocaleDateString();
+  const precioFinal = carrito.reduce((precioAcum, item) => precioAcum + (item.counter * item.price),0);
+  
+  const db= getFirestore();
+  const ordenes = collection(db, "Ordenes");
+  
   function onChange(e) {
     setFormulario({ ...formulario, [e.target.name]: e.target.value });
   }
 
-  const enviarOrden=()=> {
-
-    const itemsOrden = carrito.map( item => {
-      return {
-          id: item.id,
-          price: item.price,
-          title: item.title,
-          count: item.count
+  const enviarOrden= async(e)=> {
+    try{
+      e.preventDefault();
+      const ordenNueva={
+        formulario,
+        carrito,
+        precioFinal,
+        date:fechaOrden
       }
-    })
-        
-    const orden ={
-      buyer: {
-        nombre:formulario.nombre,
-        email:formulario.email,
-        telef:formulario.telef
-      },
-      items: itemsOrden,
-      total: precioFinal,
-      fecha: Timestamp.fromDate(new Date())
+
+      addDoc(ordenes,ordenNueva).then(({id})=> setNuevaOrden(id))
+      
+
+
+      carrito.forEach((item) => {
+				const itemRef = doc(db,"Productos",item.id);
+				updateDoc(itemRef, { stock: item.stock});
+			});
+			removeItem();
+ 
+    } catch (err){
+      console.log("error")
     }
-
-    const db= getFirestore();
-    const orderCollection = collection(db, "Ordenes");
-
-    addDoc(orderCollection,orden).then(({id})=> setNuevaOrden(id)).catch(console.log("no se pudo!"));
   }
 
-  const precioFinal = carrito.reduce((precioAcum, item) => precioAcum + (item.counter * item.price),0);
 
+  
   return(
     <div>
       { nuevaOrden ?
@@ -61,7 +63,7 @@ const FormularioCheckOut = ()=>{
               <p>Tu n° de pedido es {nuevaOrden}. Te enviaremos por mail más indicaciones!</p>
           </div>
           <Link to='/'>
-            <button>
+            <button onClick={() => clear()}>
               Volver al menu principal
             </button>
               
@@ -69,7 +71,7 @@ const FormularioCheckOut = ()=>{
         </div>
         :
         <div>
-          <form>
+          <form onSubmit={enviarOrden}>
               <div>
                   <label>Nombre: </label>
                   <br/>
@@ -84,7 +86,7 @@ const FormularioCheckOut = ()=>{
                   <input value={formulario.telef} type="text" name="telef" onChange={onChange}/>
               </div>
               <br/>
-              <button type="submit" onSubmit={enviarOrden} disabled={!(formulario.nombre &&formulario.email &&formulario.telef)}>
+              <button type="submit" disabled={!(formulario.nombre &&formulario.email &&formulario.telef)}>
                   Finalizar Compra
               </button>
           </form>
@@ -112,7 +114,3 @@ const FormularioCheckOut = ()=>{
 
 export default FormularioCheckOut;
 
-
-
-
-  

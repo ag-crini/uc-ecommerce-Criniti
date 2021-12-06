@@ -9,8 +9,7 @@
 
 }*/
 
-.Contador div{
-  width: 300px;
+.contador div{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,6 +17,36 @@
 
 }
 
+p{
+ margin:0px;   
+}
+
+.divContador{
+  margin: 5px;
+  display: flex;
+  padding: 0px;
+
+}
+
+
+button{
+  background-color: #f3c77b;;
+  border: 0px;
+  }
+
+.botonCompraMenos{
+  width: 20px;
+  height: 20px;
+  border-bottom-right-radius:30%;
+  border-top-right-radius:30%;
+}
+
+.botonCompraMas{
+  width: 20px;
+  height: 20px;
+  border-bottom-left-radius:30%;
+  border-top-left-radius:30%;
+}
 
 .imgContador {
   width:100%;
@@ -26,3 +55,9 @@
   border-top-right-radius: 5%;
 }
 
+.botonCompra{
+  height: 60px;
+  width: 100px;
+  border-radius: 15%;
+  font-size: 18px;
+}

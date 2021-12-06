@@ -9,7 +9,6 @@ const ItemCount = ({item, initial, mostrarBotonCarrito=true, onAdd})=>{
   const [count, setCount] = useState (initial)
   const {addItem} = useContext(CartContext)
   
-
   const onIncrease =()=>{
     if (mostrarBotonCarrito) {
       if (count < item.stock){
@@ -33,23 +32,22 @@ const ItemCount = ({item, initial, mostrarBotonCarrito=true, onAdd})=>{
     }
   }
 
-
-    const handleClick = () => {
-		  onAdd(count);
-      addItem (item,count)
-    };
+  const handleClick = () => {
+    onAdd(count);
+    addItem (item,count)
+  };
     
   return(
-    <div className="Contador">
-        <div>
-          <button onClick={onDecrease}>-</button>
+    <div className="contador">
+        <div className="divContador">
+          <button className="botonCompraMas" onClick={onDecrease}>-</button>
           <p>{count}</p>
-          <button onClick={onIncrease}>+</button>
+          <button className="botonCompraMenos" onClick={onIncrease}>+</button>
         </div>
-
-          <div>
-            <button onClick={handleClick}> Agregar al carrito</button>
-          </div>
+        <br/>
+        <div>
+          <button className="botonCompra" onClick={handleClick}> Agregar al carrito</button>
+        </div>
     </div>
   )
 }

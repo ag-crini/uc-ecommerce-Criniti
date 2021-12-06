@@ -26,4 +26,13 @@
   border-bottom-left-radius: 5%;
 }
 
+.botonCompra{
+  background-color: #f3c77b;
+  height: 60px;
+  width: 100px;
+  border-radius: 15%;
+  font-size: 16px;
+  margin: 5px;
+}
+
 

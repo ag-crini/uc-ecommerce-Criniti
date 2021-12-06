@@ -1,0 +1,31 @@
+.footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 40px;
+    height: 100px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    background: linear-gradient(180deg, white, #f0b651);
+    text-decoration: none;
+    text-align: center; }
+.footer__img {
+      height: 40px;
+      width: auto;
+      border-radius: 50%; }
+.footer__logo {
+      height: 45px;
+      width: auto; }
+.footer__lista {
+      display: flex;
+      flex-direction: row;
+      align-content: center; }
+.footer__link {
+      color: blanchedalmond; }
+.footer__texto {
+      color: blanchedalmond; }
+.footer_icono {
+      width: 25px;
+      color: #a47a3c;
+      margin: 2px; }

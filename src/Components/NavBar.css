@@ -15,15 +15,19 @@
 .navLink {
   text-decoration: none;
   color: black;
+  
 }
 
 ul{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   list-style: none;
 }
 
 ul li{
-  margin: 5px;
+  margin: 15px;
+  width: 100px;
 }
 

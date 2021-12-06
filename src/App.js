@@ -3,9 +3,9 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import ItemListContainer from './Components/ItemListContainer'; 
 import NavBar from './Components/NavBar';
-import FAQs from './Components/FAQs';
 import Cart from './Components/Cart';
 import FormularioCheckOut from './Components/FormularioCheckOut'
+import Footer from './Components/Footer';
 import { CartProvider } from './Context/CartContext';
 
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <CartProvider> 
       <BrowserRouter>
-        <NavBar />
+        <NavBar/>
         <Switch>
           <Route exact path="/">
             <ItemListContainer />
@@ -24,9 +24,6 @@ function App() {
           <Route exact path="/item/:itemId">
             <ItemDetailContainer />
           </Route>
-          <Route exact path="/faqs">
-            <FAQs />
-          </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
@@ -34,6 +31,7 @@ function App() {
             <FormularioCheckOut />
           </Route>
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </CartProvider>
   );

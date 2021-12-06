@@ -1,3 +1,4 @@
+import './FormularioCheckOut.css'
 import { useState } from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
@@ -38,9 +39,7 @@ const FormularioCheckOut = ()=>{
       }
 
       addDoc(ordenes,ordenNueva).then(({id})=> setNuevaOrden(id))
-      
-
-
+     
       carrito.forEach((item) => {
 				const itemRef = doc(db,"Productos",item.id);
 				updateDoc(itemRef, { stock: item.stock});
@@ -53,25 +52,24 @@ const FormularioCheckOut = ()=>{
   }
 
 
-  
   return(
-    <div>
+    <div className="formCheckOut">
       { nuevaOrden ?
-        <div>
+        <div className="divConfirm">
           <h3>Gracias por tu compra!!</h3>
           <div>
-              <p>Tu n° de pedido es {nuevaOrden}. Te enviaremos por mail más indicaciones!</p>
+              <p>Tu n° de pedido es <span>{nuevaOrden}</span>. Te enviaremos por mail más indicaciones!</p>
           </div>
+          <br/>
           <Link to='/'>
-            <button onClick={() => clear()}>
+            <button className="botonRegreso" onClick={() => clear()}>
               Volver al menu principal
-            </button>
-              
+            </button>  
           </Link>
         </div>
         :
         <div>
-          <form onSubmit={enviarOrden}>
+          <form className="formulario" onSubmit={enviarOrden}>
               <div>
                   <label>Nombre: </label>
                   <br/>
@@ -92,7 +90,7 @@ const FormularioCheckOut = ()=>{
           </form>
           <div>
             <h3>Tu pedido:</h3>
-            <div>
+            <div className="resumenCarrito">
               {
                 carrito.map((item) => (
                     <div key={item.itemId}>

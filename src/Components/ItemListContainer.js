@@ -24,23 +24,25 @@ export default function ItemListContainer(){
         setElementos(snapshot.docs.map((doc) =>{
             return {...doc.data(), id : doc.id}
         }));
-    })}
-    else{
+      })
+    }
+    else
+    {
       getDocs(collection(db, 'Productos'))
       .then((snapshot) => {
         setElementos(snapshot.docs.map((doc) => {
             const sinCategoria = {...doc.data(), id : doc.id};
             return sinCategoria;
         }))
-    })}
-}, [categoryId]);
+      })
+    }
+  }, [categoryId]);
 
 
-
-
-return (
-  <div className="itemContainer">
-    <ItemList elementos={elementos}/>
-  </div>
-)}
+  return (
+    <div className="itemContainer">
+      <ItemList elementos={elementos}/>
+    </div>
+  )
+}
  

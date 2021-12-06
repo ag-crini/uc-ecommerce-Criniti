@@ -22,3 +22,8 @@ h1{
   border-radius: 5%;
 }
 
+.botonItem{
+  height: 35px;
+  width: 150px;
+  background-color: #f3c77b;
+}

@@ -1,12 +1,9 @@
 
 .Cart{
-  height: 1000px;
-  width: 1000px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border: black 4px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin: 20px;
   border-radius: 5%;
@@ -16,4 +13,22 @@ h1{
   font-size: 25px;
 }
 
+.botonCart{
+  border-radius: 15%;
+  font-size: 16px;
+  margin: 5px;
+}
 
+.botonRemove{
+  font-size: 16px;
+  margin: 5px;
+  background-color: darkred;
+  color:white;
+}
+
+.botonConfirm{
+  font-size: 16px;
+  margin: 5px;
+  background-color: rgb(23, 139, 0);
+  color:white;
+}

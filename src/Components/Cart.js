@@ -8,17 +8,15 @@ import { Link } from 'react-router-dom';
 export const Cart =()=> {
   
   const {carrito, clear}=useContext(CartContext)
-
   const {removeItem }= useContext(CartContext);
     console.log(carrito)
 
   const precioFinal = carrito.reduce((precioAcum, item) => precioAcum + (item.counter * item.price),0);
 
-
-
   return(
-<div className="Cart">
-      {carrito.length ? (
+    <div className="Cart">
+      {carrito.length ? 
+        (
         carrito.map (item => 
           <div key={item.id}>
             
@@ -28,45 +26,42 @@ export const Cart =()=> {
             title={item.title}
             counter={item.counter}
             price={item.price}
-                                    
-            /> 
-            <button onClick={()=>removeItem(item.id)}>Remover item</button>
+            />
 
-          </div>  
-        )): 
+            <button className="botonRemove" onClick={()=>removeItem(item.id)}>Remover item</button>
+          </div>
+          )
+        ): 
         <div>
-          <p> No hay ningun producto!</p>
-          <Link to={`/`}>
-            <button>Anda a buscar uno antes que sea tarde!</button>
-          </Link>
-        </div>}
-          
-      {carrito.length ? (
+          <p> No hay ningun producto en tu carrito de compras!</p>
+        </div>
+      }
+
+      {
+      carrito.length ? 
+        (
 				<div>
-          <button onClick={() => clear()}>Remover todos los productos</button>
+          <button className="botonRemove" onClick={() => clear()}>Remover todos los items</button>
+          <br/>
           <Link to='/checkout'>
-            <button>Confirmar compra!</button>
+            <button className="botonConfirm">Confirmar compra!</button>
           </Link>
 			  </div>
-        ) : 
+        ) 
+        : 
 				<Link to='/'>
-					<button>Volver al menú</button>
+					<button className="botonCart">Buscá uno antes que sea tarde!</button>
 				</Link>
       }
-
-      <div>
-
-      {precioFinal !== 0 && 
-      ( <p>
-          Total a pagar: ${precioFinal}
-        </p>
-      )
+      {
+      precioFinal !== 0 && 
+        <div>
+          <p>
+            Total a pagar: ${precioFinal}
+          </p>
+        </div>
       }
-      </div>
-
-      </div>
-
-
+    </div>
   )
 }
 

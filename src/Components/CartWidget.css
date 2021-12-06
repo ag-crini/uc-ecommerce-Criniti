@@ -1,6 +1,19 @@
-svg{
-  width: 30px;
+.carritoIcono{
+  width: 35px;
   height: auto;
-  color: black;
+  margin: 25px;
+  color: #a47a3c;
+  position: absolute;
+}
+
+.cantidadCarrito{
+
+  border-radius: 45%;
+  background-color: red;
+  color: white;
+  width: 27px;
+  position: relative;
+  top: 5px;
+  left:55px
 }
 
